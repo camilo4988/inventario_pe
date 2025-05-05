@@ -1,0 +1,45 @@
+Cambios realizados en model/equipo/equipo.php para limpiar los selects al enviar el formulario:
+
+1. En la sección PHP que procesa el POST, después de una inserción exitosa, se agregó una redirección para limpiar el formulario:
+
+Antes:
+if ($conn->query($sql) === TRUE) {
+    $message = "Activo registrado correctamente.";
+} else {
+    $message = "Error: " . $conn->error;
+}
+
+Después:
+if ($conn->query($sql) === TRUE) {
+    $message = "Activo registrado correctamente.";
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+} else {
+    $message = "Error: " . $conn->error;
+}
+
+2. En las opciones del select para "tipo" y "estado_inicial", se eliminó la lógica que mantenía la opción seleccionada después del envío del formulario:
+
+Antes:
+<option value="<?php echo htmlspecialchars($tipo_option['id']); ?>" <?php if (isset($_POST['tipo']) && $_POST['tipo'] == $tipo_option['id']) echo 'selected'; ?>>
+    <?php echo htmlspecialchars($tipo_option['id'] . ' - ' . $tipo_option['nombre']); ?>
+</option>
+
+Después:
+<option value="<?php echo htmlspecialchars($tipo_option['id']); ?>">
+    <?php echo htmlspecialchars($tipo_option['id'] . ' - ' . $tipo_option['nombre']); ?>
+</option>
+
+Y para estado_inicial:
+
+Antes:
+<option value="<?php echo htmlspecialchars($estado_option['nombre']); ?>" <?php if (isset($_POST['estado_inicial']) && $_POST['estado_inicial'] == $estado_option['nombre']) echo 'selected'; ?>>
+    <?php echo htmlspecialchars($estado_option['nombre']); ?>
+</option>
+
+Después:
+<option value="<?php echo htmlspecialchars($estado_option['nombre']); ?>">
+    <?php echo htmlspecialchars($estado_option['nombre']); ?>
+</option>
+
+Estos cambios hacen que al enviar el formulario y registrar un equipo, la página se recargue y los selects se limpien, mostrando la opción por defecto.
