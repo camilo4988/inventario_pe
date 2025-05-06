@@ -1,4 +1,7 @@
 <?php
+   // require_once "./autoload.php";
+    require_once "./config2/app.php";
+    require_once "./views/inc/session.php";
    $message = "Inventario PARTEQUIPOS   2025";
 ?>
 
@@ -6,9 +9,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Control y registro de Inventario</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-   
+    <?php require_once "./views/inc/head.php";?>
 </head>
 <body>
     <h1>BIENVENIDO USUARIO</h1>
