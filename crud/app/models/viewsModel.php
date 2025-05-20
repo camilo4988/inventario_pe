@@ -4,29 +4,35 @@ namespace app\models;
 
 /***PENDIENTE ARREGLAR CONDICIONALES, EN EL TUTORIAL ESTAN HORRIBLES, SE PUEDE SIMPLIFICAR */
 class viewsModel{
+    
     protected function obtenerVistasModelo($vista) {
+        $var="./app/views/content/";
+        $complemento="-view.php";
         //array que contendra las palabras complementarias admitidas en la url
-        $listaBlanca=["dashboard"];
-        //valido que el nombre de la vista esta definida en el array
-        if(in_array($vista,$listaBlanca)){
-            //ahora comprobamos si existe en el directorio content
-            if(is_file("./app/views/content/".$vista."-view.php")){
-                //si existe se crea la ruta en la variable content
-                $content="./app/views/content/".$vista."-view.php";
+        $inicio=["login","index"];
         
-                }
-                else {
-                    $content= "404";
-                }
-            }elseif($vista=="login" || $vista== "index"){
-                $content= "login";
+        $content=$var.$vista.$complemento; 
+        
+// Comprobar si la vista está en el array de inicio
+if (in_array($vista, $inicio)) {
+    //print_r($vista.'entor'); die;
+    return "login"; // Retorna "login" si la vista es válida
+}
 
-            }
-            else {
-                $content= "404";
-            }
-            //retorna la url
-            return $content;
+// Comprobar si el archivo existe en el directorio content
+    if (is_file($content)) {
+        return $content; // Retorna la ruta del archivo si existe
+    } 
+
+
+
+
+
+    // Retorna "404" si no se encuentra la vista
+    return "404";
+
+          
         }
     }
+
 ?>

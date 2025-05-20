@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center; /* Alinea el título al centro */
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%; /* Asegura que el formulario ocupe el 100% de su contenedor */
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+input[type="radio"] {
+    margin-left: 10px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/***********/
+/* Contenedor principal que divide la pantalla */
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%; /* Asegura que el contenedor ocupe el 100% de su espacio */
+    box-sizing: border-box;
+}
+
+/* Estilo para que tanto el formulario como el resultado ocupen el mismo espacio */
+form, .resultado {
+    flex: 1;
+    max-width: 50%;  /* Ajustamos a 48% para permitir espacio entre los elementos */
+    box-sizing: border-box;
+}
+
+/* Estilo para la tabla de resultados */
+.resultado table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.resultado th, .resultado td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.resultado th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.resultado td {
+    background-color: #fff;
+}
+
+.resultado td, .resultado th {
+    word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+}
+
+/* Anchos específicos para las columnas */
+.resultado .wide-col {
+    width: 250px; /* Ajusta el ancho de las columnas más anchas */
+}
+
+.resultado .narrow-col {
+    width: 120px; /* Ajusta el ancho de las columnas más estrechas */
+}
+
+.resultado table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alterna colores de fondo para filas */
+}
+
+.resultado table tr:nth-child(odd) {
+    background-color: #fff;
+}
