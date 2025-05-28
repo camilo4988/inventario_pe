@@ -1,0 +1,1 @@
+este es una foto de usuario
